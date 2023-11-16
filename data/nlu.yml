@@ -1,0 +1,394 @@
+version: "3.1"
+nlu:
+  - intent: greet
+    examples: |
+      - chào em
+      - hello em
+      - hi em
+      - em ơi, cho anh hỏi
+      - bot ơi
+      - cho mình hỏi chút
+      - chào bạn nha
+      - chào bot
+      - hello
+      - xin chào
+      - hôm nay bạn thế nào
+      - hey
+      - chào bạn
+      - alo alo
+      - hú
+      - merci
+      - hi
+      - xin chào bot
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+      - good bye
+      - tạm biệt em
+      - tạm biệt bot nhá
+      - tạm biệt bạn nha
+      - gặp sau nha
+      - hẹn lần khác
+      - lúc khác nói tiếp sau
+      - thôi nha
+      - gặp sau
+      - đi đây
+  - intent: affirm
+    examples: |
+      - bot giỏi quá
+      - awsome
+      - bot làm tốt lắm
+      - ui giỏi thế
+      - hay vậy
+      - dị cũng làm được
+      - hay dữ vậy
+      - bot thông minh
+      - đẹp trai đấy
+      - Ênm đệnp léăm
+      - đúng
+      - chính xác
+      - cũng được
+      - cũng hay đó
+      - khá khen
+      - đáng để khen
+      - tạm ổn
+      - cũng đúng một phần
+      - xuất sắc luôn
+      - quá đỉnh luôn
+      - good job
+      - oke
+      - Được
+      - Cũng được
+      - yes
+      - y
+      - yeah
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+      - Bạn làm rất tốt.
+      - Bạn rất thông minh.
+      - Bạn rất hữu ích.
+      - Bạn rất tuyệt vời.
+      - Bạn rất đáng kinh ngạc.
+      - Bạn rất ấn tượng.
+      - Bạn rất giỏi.
+      - Bạn rất tài năng.
+      - Bạn đã làm rất tốt.
+      - Bạn đã trả lời đúng câu hỏi của tôi.
+      - Bạn đã hoàn thành nhiệm vụ của tôi một cách hiệu quả.
+      - Bạn đã giúp tôi rất nhiều.
+      - Bạn đã làm tôi hài lòng.
+      - Bạn đã làm tôi ấn tượng.
+      - Bạn đã làm tôi ngạc nhiên.
+      - Bạn đã làm tôi thích thú.
+  - intent: thankyou
+    examples: |
+      - cảm ơn em nhá
+      - thanks em nha
+      - cảm ơn nha
+      - cảm ơn bạn nha
+      - cảm ơn nhiều
+      - thank you
+      - cảm ơn bot nha
+      - thanks bot
+      - cảm ơn
+      - thank you so much
+      - great! Thanks
+  - intent: ask_ability
+    examples: |
+      - có thể làm những gì nhỉ
+      - có chức năng gì?
+      - giúp gì được anh không?
+      - bạn có thể  làm gì?
+      - có thể giúp gì cho anh?
+      - bạn biết hát không ?
+      - bạn biết xem lịch học ah?
+      - biết làm gì?
+      - hỗ trợ anh như thế nào?
+      - cho anh xem các chức năng
+      - làm được việc gì
+      - bạn có thể làm được gì
+  - intent: deny
+    examples: |
+      - Tôi không đồng ý.
+      - Tôi không nghĩ vậy.
+      - Không phải vậy.
+      - Tôi không tin điều đó.
+      - Tôi không ủng hộ ý kiến đó.
+      - Tôi không đồng tình với quan điểm của bạn.
+      - Tôi không ủng hộ hành động đó.
+      - Tôi không cho rằng điều đó là đúng.
+      - Tôi không chấp nhận điều đó.
+      - Tôi không đồng lòng với bạn.
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+      - nooo
+      - không phải em ơi
+      - quá tệ
+      - ngu ngốc
+      - chả biết gì cả
+      - ngu thật
+      - dở ghê
+      - có thế mà cũng không biết
+      - kém cỏi
+      - sai rồi, chán ghê
+      - sai sai sai
+      - không đúng nha
+  - intent: mood_great
+    examples: |
+      - very good
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremly sad
+      - so saad
+      - so sad
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
+      - robot ?
+      - tôi đang nói chuyện với ai?
+  - intent: other_features
+    examples: |
+      - chức năng khác là gì
+      - Còn các tính năng nào khác không?
+      - Có thêm chức năng nào không?
+      - Tôi có thể biết thêm về các tính năng khác không?
+      - Điều gì khác nữa mà ứng dụng có thể làm?
+      - Còn gì nữa không?
+      - Tính năng nào còn lại?
+      - Tôi còn có thể làm gì khác?
+      - Còn điều gì đặc biệt?
+      - Ngoài ra còn có gì không?
+      - Ứng dụng có thêm gì không?
+  - intent: ask_HT_info
+    examples: |
+      - Hội trường rùa có sức chứa bao nhiêu?
+      - Hội trường rùa được xây dựng năm nào?
+      - Hội trường rùa được thiết kế như thế nào?
+      - Hội trường rùa được sử dụng cho mục đích gì?
+      - Hội trường rùa có nổi tiếng không?
+      - hội trường rùa?
+  - intent: ask_HT_where
+    examples: |
+      - hội trường rùa ở đâu
+      - hội trường rùa có địa chỉ ở đâu
+      - hội trường rùa nằm ở đâu
+      - hội trường rùa tọa lạc ở đâu
+      - hội trường đi đường nào
+      - đường đi tới hội trường rùa
+      - đi đường
+      - ở đâu
+      - địa chỉ
+  - intent: ask_seat_info
+    examples: |
+      - chổ ngồi được xếp như thế nào
+      - có được lựa chọn chổ ngồi không
+      - tự chọn chổ ngồi như thế nào
+      - tôi muốn tự chọn chổ ngồi thì làm sao
+      - cách nào để tự chọn chổ ngồi
+      - chổ ngồi được sắp xếp sẵn
+      - không được chọn chổ ngồi cho mình
+  - intent: ask_seat_find
+    examples: |
+      - chổ ngồi ở đâu
+      - tìm kiếm chổ ngồi
+      - chổ ngồi của tôi ở đâu
+      - làm sao để tìm chổ ngồi
+      - ngồi ở đâu
+      - tìm chổ ngồi
+      - chỗ ngồi của mình ở hàng nào?
+      - chỗ ngồi của mình ở dãy nào?
+      - chỗ ngồi của mình ở ghế số mấy?
+      - tôi có thể tìm thấy chỗ ngồi của mình ở đâu?
+      - tôi có thể tìm vị trí chỗ ngồi của mình bằng cách nào?
+      - tôi có thể biết chỗ ngồi của mình ở đâu không?
+      - chỗ ngồi của tôi ở đâu nhỉ?
+      - tôi quên mất chỗ ngồi của mình rồi, bạn có thể giúp tôi không?
+      - tôi đang tìm chỗ ngồi của mình, bạn có thể giúp tôi tìm không?
+      - chỗ ngồi của tôi ở đâu, ở hàng ghế đầu à?
+  - intent: ask_register_seat
+    examples: |
+      - tôi muốn đăng ký tham gia
+      - đăng ký tham gia như thế nào
+      - làm sao để đăng ký tham gia
+      - tham gia
+      - tôi có thể đăng ký chổ ngồi không?
+      - tồi có thể tham gia không?
+      - hướng dẫn tham gia
+      - hướng dẫn đăng ký chổ ngồi
+      - giúp tôi đăng ký tham gia
+      - đăng ký tham gia
+      - đăng kí tham gia
+      - tham gia sự kiện
+      - đăng ký tham gia sự kiện
+  - intent: ask_register_event
+    examples: |
+      - đăng ký tổ chức như thế nào
+      - làm sao để đăng ký
+      - cách để đăng ký
+      - tổ chức như thế nào
+      - làm sao để tổ chức
+      - hướng dẫn đăng ký tổ chức
+      - đăng ký tổ chức
+      - đăng ký sự kiện
+      - muốn tổ chức
+  - intent: inform_event
+    examples: |
+      - sự kiện tên là [tốt nghiệp](event_name)
+      - tên sự kiện là [tốt nghiệp](event_name)
+      - tên của sự kiện là [tốt nghiệp](event_name)
+      - sự kiện có tên là [tốt nghiệp](event_name)
+      - tên sự kiện [tốt nghiệp](event_name)
+      - sự kiện tên [tốt nghiệp](event_name)
+      - sự kiện tên là [hội thao](event_name)
+      - sự kiện tên là [hội thao](event_name)
+  - intent: ask_total_event
+    examples: |
+      - tổng
+      - bao nhiêu
+      - tổng đã tồn tại là bao nhiêu
+      - bao nhiêu đã tồn tại
+      - đã tồn tại bao nhiêu rồi
+      - tổng bao nhiêu
+  - intent: ask_today_event
+    examples: |
+      - bạn giúp tôi xem hôm nay diễn ra không
+      - hôm nay
+      - hôm nay là gì
+      - hôm nay diễn ra gì
+      - hôm nay nào diễn ra
+      - xem hôm nay
+      - sự kiện hôm nay
+  - intent: ask_next_event
+    examples: |
+      - ngày mai
+      - sẽ được tổ chức vào ngày mai
+      - ngày mai là gì
+      - ngày mai diễn ra gì
+      - ngày mai nào diễn ra không?
+  - intent: ask_type_event
+    examples: |
+      - cho tôi biết bao nhiêu loại
+      - bao nhiêu loại
+      - gồm những loại nào
+      - tôi đăng ký được những nào
+  - intent: ask_most_event
+    examples: |
+      - nào được tham gia nhiều nhất
+      - đang nổi bật
+      - nổi bật
+      - người ta tham gia nào nhiều
+      - được nhiều người tham gia
+      - đáng để tham gia nhất
+  - intent: ask_new_event
+    examples: |
+      - mới nhất
+      - nào mới nhất
+      - mới được tạo
+      - gì mới
+      - mới nhất là gì
+      - mới được tổ chức
+      - không ai tham gia
+  - intent: ask_event_enable
+    examples: |
+      - nào được cho phép
+      - đăng ký tham gia thoải mái
+      - không ràng buộc tham gia
+      - tham gia được không
+      - không giới hạn người tham gia
+  - intent: ask_info_event
+    examples: |
+      - xem thông tin
+      - thông tin thời gian diễn ra
+      - tôi muốn biết thông tin
+      - thông tin
+      - thông tin như thế nào
+      - thông tin diễn ra lúc nào
+      - thông tin diễn ra vào ngày nào
+      - thông tin tổ chức vào ngày nào
+      - thông tin tổ chức khi nào
+      - thông tin sự kiện
+  - intent: inform_email
+    examples: |
+      - email của tôi là [ducb1910367@student.ctu.edu.vn](user_email)
+      - email [ducb1910367@student.ctu.edu.vn](user_email) là của tôi
+      - [ducb1910367@student.ctu.edu.vn](user_email) là email của tôi
+      - email là [ducb1910367@student.ctu.edu.vn](user_email)
+      - email [ducb1910367@student.ctu.edu.vn](user_email)
+  - intent: stop_form
+    examples: |
+      - dừng lại
+      - tôi không muốn cung cấp
+      - stop
+      - tôi muốn dừng lại
+      - tôi nói là dừng lại
+  - intent: ask_for_meal
+    examples: |
+      - Buổi [sáng](timeOfDay) nay ăn gì
+      - tôi không biết ăn gì [sáng](timeOfDay) nay
+      - [sáng](timeOfDay) nay ăn gì bây giờ
+      - gợi ý cho tôi ăn gì [sáng](timeOfDay) nay
+  - regex: event_name
+    examples: |
+      - (?<=sự kiện là\s)(.+)
+      - (?<=sự kiện là\s)(.+)(?=\s[0-9]+)
+      - (?<=sự kiện\s)(.*?)(?=\snhư)
+      - (?<=sự kiện\s)(.*?)(?=\sđăng k)
+      - (?<=sự kiện\s)(.+)(?=\s[0-9]+)
+      - (?<=tên là\s)(.+)
+  - regex: id_event
+    examples: |
+      - [a-z0-9]{24}
+  - regex: user_email
+    examples: |
+      - ^[a-zA-Z0-9.+-]+@ctu.edu.vn
+      - ^[a-zA-Z]{1,6}[a-zA-Z]{1}[0-9]{5,7}@student.ctu.edu.vn
+  - lookup: timeOfDay
+    examples: |
+      - sáng
+      - trưa
+      - chiều
+      - tối

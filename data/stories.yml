@@ -1,0 +1,409 @@
+version: "3.1"
+
+stories:
+  - story: chào
+    steps:
+      - intent: greet
+      - action: utter_greet
+  - story: tạm biệt
+    steps:
+      - intent: goodbye
+      - action: action_event_help
+  - story: hỏi chức nằng và nên ăn gì
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_ability
+      - action: utter_show_ability
+      - intent: ask_for_meal
+      - action: action_recommend
+  - story: Cảm ơn và không có gì
+    steps:
+      - intent: thankyou
+      - action: utter_happy
+      - intent: affirm
+      - action: utter_cheer_up
+  - story: hỏi chức nằng
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_ability
+      - action: utter_show_ability
+  - story: hỏi chức năng và sự kiện mới nhất
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_ability
+      - action: utter_show_ability
+      - intent: ask_new_event
+      - action: action_new_event
+      - intent: thankyou
+      - action: action_event_help
+  - story: hỏi chức năng và hỏi ăn gì
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_ability
+      - action: utter_show_ability
+      - intent: other_features
+      - action: utter_other_features
+      - intent: ask_for_meal
+      - action: action_recommend
+  - story: hỏi chức năng hỏi, sự kiện ngày mai và đúng
+    steps:
+      - intent: ask_ability
+      - action: utter_show_ability
+      - intent: ask_next_event
+      - action: action_tomorow_event
+      - or:
+          - intent: affirm
+          - intent: thankyou
+          - intent: mood_great
+      - action: action_event_help
+  - story: hỏi chức năng hỏi, sự kiện ngày mai nhưng sai
+    steps:
+      - intent: ask_ability
+      - action: utter_show_ability
+      - intent: ask_next_event
+      - action: action_tomorow_event
+      - or:
+          - intent: deny
+          - intent: mood_unhappy
+      - action: utter_happy
+      - action: action_event_help
+  - story: phủ nhận và hỏi giúp được gì
+    steps:
+      - intent: deny
+      - action: utter_unhappy
+      - action: action_event_help
+      - intent: ask_ability
+      - action: action_event_help
+  - story: Dừng event form hỏi thông tin
+    steps:
+      - intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - intent: stop_form
+      - action: action_deactivate_loop
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - slot_was_set:
+          - event: null
+      - slot_was_set:
+          - email: null
+      - action: action_event_help
+  - story: Đăng ký tham gia sự kiện
+    steps:
+      - intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - intent: inform_event
+      - slot_was_set:
+          - event
+      - action: register_event_form
+      - slot_was_set:
+          - requested_slot: email
+      - intent: inform_email
+      - slot_was_set:
+          - event
+          - email
+      - action: register_event_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_register_seat
+  - story: Đăng ký tham gia sự kiện sau khi chào
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - or:
+          - intent: inform_event
+          - intent: ask_info_event
+          - intent: ask_register_event
+          - intent: ask_HT_info
+          - intent: ask_event_enable
+          - intent: ask_most_event
+          - intent: ask_new_event
+          - intent: ask_next_event
+          - intent: ask_today_event
+      - slot_was_set:
+          - event
+      - action: register_event_form
+      - slot_was_set:
+          - requested_slot: email
+      - intent: inform_email
+      - slot_was_set:
+          - event
+          - email
+      - action: register_event_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_register_seat
+  - story: Đăng ký tham gia sự kiện sau khi chào và hỏi chức năng
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_ability
+      - action: utter_show_ability
+      - intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - or:
+          - intent: inform_event
+          - intent: ask_info_event
+          - intent: ask_register_event
+          - intent: ask_HT_info
+          - intent: ask_event_enable
+          - intent: ask_most_event
+          - intent: ask_new_event
+          - intent: ask_next_event
+          - intent: ask_today_event
+      - slot_was_set:
+          - event
+      - action: register_event_form
+      - slot_was_set:
+          - requested_slot: email
+      - intent: inform_email
+      - slot_was_set:
+          - event
+          - email
+      - action: register_event_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_register_seat
+  - story: chào hỏi và hỏi sự kiện ngày mai
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_next_event
+      - action: action_tomorow_event
+      - intent: goodbye
+      - action: action_event_help
+  - story: chào hỏi và chọn hỏi thông tin sự kiện
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - intent: inform_event
+      - slot_was_set:
+          - event
+      - action: event_form
+      - slot_was_set:
+          - event
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+      - intent: goodbye
+      - action: action_event_help
+  - story: chào hỏi và chọn hỏi thông tin sự kiện shorts
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - event
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+  - story: hỏi thông tin sự kiện sau help
+    steps:
+      - action: action_event_help
+      - intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - intent: inform_event
+      - slot_was_set:
+          - event
+      - action: event_form
+      - slot_was_set:
+          - event
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+  - story: hỏi thông tin sự kiện sau help short
+    steps:
+      - action: action_event_help
+      - intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - event
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+  - story: Đăng ký tham gia sự kiện khi sau help
+    steps:
+      - action: action_event_help
+      - intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - intent: inform_event
+      - slot_was_set:
+          - event
+      - action: register_event_form
+      - slot_was_set:
+          - requested_slot: email
+      - intent: inform_email
+      - slot_was_set:
+          - event
+          - email
+      - action: register_event_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_register_seat
+  - story: Hỏi thông tin của một sự kiện
+    steps:
+      - intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - intent: inform_event
+      - slot_was_set:
+          - event
+      - action: event_form
+      - slot_was_set:
+          - event
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+  - story: Hỏi thông tin của một sự kiện ngắn hơn
+    steps:
+      - intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - event
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+  - story: Hỏi thông tin của một sự kiện
+    steps:
+      - intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - event
+      - action: event_form
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+  - story: stop form register_event_form
+    steps:
+      - intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - intent: stop_form
+      - action: action_deactivate_loop
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - slot_was_set:
+          - event: null
+      - slot_was_set:
+          - email: null
+      - action: action_event_help
+      - intent: ask_most_event
+      - action: action_most_event
+  - story: stop form on email + ask_event_enable
+    steps:
+      - intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - intent: inform_event
+      - slot_was_set:
+          - event
+      - action: register_event_form
+      - slot_was_set:
+          - event
+      - slot_was_set:
+          - requested_slot: email
+      - intent: stop_form
+      - action: action_deactivate_loop
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - slot_was_set:
+          - event: null
+      - slot_was_set:
+          - email: null
+      - action: action_event_help
+      - intent: ask_event_enable
+      - action: action_event_enable
+  - story: stop form on email
+    steps:
+      - intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - intent: inform_event
+      - slot_was_set:
+          - event
+      - action: register_event_form
+      - slot_was_set:
+          - event
+      - slot_was_set:
+          - requested_slot: email
+      - intent: stop_form
+      - slot_was_set:
+          - email
+      - action: action_deactivate_loop
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - slot_was_set:
+          - event: null
+      - slot_was_set:
+          - email: null
+      - action: action_event_help

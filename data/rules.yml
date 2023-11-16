@@ -1,0 +1,130 @@
+version: "3.1"
+rules:
+  - rule: hỏi đăng ký sự kiện
+    steps:
+      - intent: ask_register_event
+      - action: utter_register_event
+  - rule: hỏi thông tin hội trường
+    steps:
+      - intent: ask_HT_info
+      - action: utter_HT_info
+  - rule: hỏi vị trí hội trường
+    steps:
+      - intent: ask_HT_where
+      - action: utter_HT_where
+  - rule: Tổng sự kiện
+    steps:
+      - intent: ask_total_event
+      - action: action_total_event
+  - rule: Sự kiện hôm nay
+    steps:
+      - intent: ask_today_event
+      - action: action_today_event
+  - rule: Sự kiện ngày mai
+    steps:
+      - intent: ask_next_event
+      - action: action_tomorow_event
+  - rule: Sự kiện nhiều người
+    steps:
+      - intent: ask_most_event
+      - action: action_most_event
+  - rule: Sự kiện mới nhất
+    steps:
+      - intent: ask_new_event
+      - action: action_new_event
+  - rule: Sự kiện ai cũng có thể đăng ký
+    steps:
+      - intent: ask_event_enable
+      - action: action_event_enable
+  - rule: Hỏi chổ ngồi của mình
+    steps:
+      - intent: ask_seat_find
+      - action: utter_find_seat
+  - rule: Hỏi chổ thông tin về chổ ngồi là gì
+    steps:
+      - intent: ask_seat_info
+      - action: utter_seat_info
+  - rule: Đăng ký tham gia sự kiện
+    steps:
+      - intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - slot_was_set:
+          - requested_slot: email
+      - slot_was_set:
+          - event
+          - email
+  - rule: submit register_seat
+    condition:
+      - active_loop: register_event_form
+      - slot_was_set:
+          - email
+          - event
+    steps:
+      - action: register_event_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_register_seat
+  - rule: hỏi thông tin sự kiện
+    steps:
+      - intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - slot_was_set:
+          - event
+  - rule: submit event_form
+    condition:
+      - active_loop: event_form
+      - slot_was_set:
+          - event
+    steps:
+      - action: event_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+  - rule: Dừng form register_event_form 2
+    condition:
+      - active_loop: register_event_form
+    steps:
+      - intent: stop_form
+      - action: action_deactivate_loop
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - slot_was_set:
+          - event: null
+      - slot_was_set:
+          - email: null
+      - action: action_event_help
+  - rule: Dừng form event_form
+    condition:
+      - active_loop: event_form
+    steps:
+      - intent: stop_form
+      - action: action_deactivate_loop
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - slot_was_set:
+          - event: null
+      - slot_was_set:
+          - email: null
+      - action: action_event_help
+  - rule: nhận event name
+    condition:
+      - active_loop: event_form
+    steps:
+      - intent: inform_event
+      - action: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - slot_was_set:
+          - event

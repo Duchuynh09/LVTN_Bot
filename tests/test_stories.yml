@@ -1,0 +1,198 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+  - story: Greet và đăng ký sự kiện sự kiện và hỏi chức năng
+    steps:
+      - user: |
+          hello
+        intent: greet
+      - action: utter_greet
+      - user: |
+          chức năng của bot là gì
+        intent: ask_ability
+      - action: utter_show_ability
+      - user: |
+          đăng ký tham gia sự kiện
+        intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - user: |
+          Sự kiện tên là [hội thao](event_name)
+        intent: inform_event
+      - slot_was_set:
+          - event: hội thao
+      - action: register_event_form
+      - slot_was_set:
+          - requested_slot: email
+      - user: |
+          [ducb1910367@student.ctu.edu.vn](user_email)
+        intent: inform_email
+      - slot_was_set:
+          - event: hội thao
+          - email: ducb1910367@student.ctu.edu.vn
+      - action: register_event_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_register_seat
+  - story: đăng ký tham gia sự kiện
+    steps:
+      - user: |
+          hello
+        intent: greet
+      - action: utter_greet
+      - user: |
+          đăng ký tham gia sự kiện
+        intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - user: |
+          Sự kiện tên là [hội thao](event_name)
+        intent: inform_event
+      - slot_was_set:
+          - event: hội thao
+      - action: register_event_form
+      - slot_was_set:
+          - requested_slot: email
+      - user: |
+          [ducb1910367@student.ctu.edu.vn](user_email)
+        intent: inform_email
+      - slot_was_set:
+          - event: hội thao
+          - email: ducb1910367@student.ctu.edu.vn
+      - action: register_event_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_register_seat
+
+  - story: đăng ký tham gia sự kiện
+    steps:
+      - user: |
+          đăng ký tham gia sự kiện
+        intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - user: |
+          Sự kiện tên là [hội thao](event_name)
+        intent: inform_event
+      - slot_was_set:
+          - event: hội thao
+      - action: register_event_form
+      - slot_was_set:
+          - requested_slot: email
+      - user: |
+          [ducb1910367@student.ctu.edu.vn](user_email)
+        intent: inform_email
+      - slot_was_set:
+          - event: hội thao
+          - email: ducb1910367@student.ctu.edu.vn
+      - action: register_event_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_register_seat
+  - story: dừng form register_event_form
+    steps:
+      - user: |
+          đăng ký tham gia sự kiện
+        intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - user: |
+          stop
+        intent: stop_form
+      - action: action_deactivate_loop
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_event_help
+  - story: dừng form register_event_form 1
+    steps:
+      - user: |
+          đăng ký tham gia sự kiện
+        intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - slot_was_set:
+          - event
+      - slot_was_set:
+          - requested_slot: email
+      - user: |
+          stop
+        intent: stop_form
+      - slot_was_set:
+          - email
+      - action: action_deactivate_loop
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - slot_was_set:
+          - event: null
+          - email: null
+      - action: action_event_help
+  - story: dừng form register_event_form 2
+    steps:
+      - user: |
+          đăng ký tham gia sự kiện
+        intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - user: |
+          sự kiện là [hội thao](event_name)
+        entities:
+          - event_name: hội thao
+        intent: inform_event
+      - slot_was_set:
+          - event: hội thao
+      - slot_was_set:
+          - requested_slot: email
+      - user: |
+          stop
+        intent: stop_form
+      - slot_was_set:
+          - email
+      - action: action_deactivate_loop
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - slot_was_set:
+          - event: null
+          - email: null
+      - action: action_event_help
+  - story: dừng form register_event_form 2
+    steps:
+      - user: |
+          đăng ký tham gia sự kiện
+        intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - user: |
+          sự kiện là [hội thao](event_name)
+        entities:
+          - event_name: hội thao
+        intent: inform_event
+      - slot_was_set:
+          - event: hội thao
+      - slot_was_set:
+          - requested_slot: email
+      - user: |
+          stop
+        intent: stop_form
+      - action: action_deactivate_loop
+      - action: action_event_help

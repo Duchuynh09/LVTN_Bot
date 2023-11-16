@@ -1,0 +1,200 @@
+version: "3.1"
+
+stories:
+  - story: chào hỏi và chọn hỏi thông tin sự kiện 2
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - intent: inform_event
+      - slot_was_set:
+          - event
+      - action: event_form
+      - slot_was_set:
+          - event
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+      - intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - intent: inform_event
+      - slot_was_set:
+          - event
+      - action: event_form
+      - slot_was_set:
+          - event
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+      - intent: goodbye
+      - action: action_event_help
+  - story: hỏi tiếp thông tin sự kiện
+    steps:
+      - user: |
+          hỏi thông tin sự kiện
+        intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - user: |
+          sự kiện tên là [tốt nghiệp](event_name)
+        intent: inform_event
+        entities:
+          - event_name: tốt nghiệp
+      - slot_was_set:
+          - event: tốt nghiệp
+      - action: event_form
+      - slot_was_set:
+          - event: tốt nghiệp
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+      - user: |
+          thông tin sự kiện
+        intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - user: |
+          sự kiện tên là [hội thao](event_name)
+        intent: inform_event
+        entities:
+          - event_name: hội thao
+      - slot_was_set:
+          - event: hội thao
+      - action: event_form
+      - slot_was_set:
+          - event: hội thao
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+      - user: |
+          tạm biệt
+        intent: goodbye
+      - action: action_event_help
+  - story: hỏi thông tin sự kiện short
+    steps:
+      - user: |
+          thông tin sự kiện khai giảng
+        intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - event: khai giảng
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+  - story: dừng form hỏi thông tin sự kiện
+    steps:
+      - user: |
+          thông tin sự kiện
+        intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - user: |
+          stop
+        intent: stop_form
+      - action: action_deactivate_loop
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - slot_was_set:
+          - event: null
+      - action: action_event_help
+  - story: hỏi thông tin sự kiện
+    steps:
+      - user: |
+          thông tin sự kiện khai giảng
+        intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - user: |
+          Sự kiện tên là [khai giảng](event_name)
+        intent: inform_event
+      - slot_was_set:
+          - event: khai giảng
+      - action: event_form
+      - slot_was_set:
+          - event: khai giảng
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+      - user: sự kiện hôm nay
+        intent: ask_today_event
+      - action: action_today_event
+  - story: hỏi thông tin sự kiện
+    steps:
+      - user: |
+          thông tin sự kiện khai giảng
+        intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - user: |
+          Sự kiện tên là [khai giảng](event_name)
+        intent: inform_event
+      - slot_was_set:
+          - event: khai giảng
+      - action: event_form
+      - slot_was_set:
+          - event: khai giảng
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+      - user: sự kiện hôm nay
+        intent: ask_today_event
+      - action: action_today_event
+      - user: |
+          thông tin sự kiện khai giảng
+        intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - requested_slot: event
+      - user: |
+          Sự kiện tên là [khai giảng](event_name)
+        intent: inform_event
+      - slot_was_set:
+          - event: khai giảng
+      - action: event_form
+      - slot_was_set:
+          - event: khai giảng
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
