@@ -15,14 +15,8 @@ pipeline:
   - name: "LanguageModelFeaturizer"
     model_name: "bert"
     model_weights: "rasa/LaBSE"
-  - name: "CountVectorsFeaturizer"
-    analyzer: "char_wb"
-    min_ngram: 2
-    max_ngram: 5
-    lowercase: true
-  - name: "RegexFeaturizer"
   - name: "DIETClassifier"
-    epochs: 50
+    epochs: 100
     entity_recognition: False
     constrain_similarities: True
   - name: "RegexEntityExtractor"
@@ -30,7 +24,11 @@ pipeline:
     use_word_boundaries: True
     use_lookup_tables: True
     use_regexes: True
-
+  # - name: "CountVectorsFeaturizer"
+  #   analyzer: "char_wb"
+  #   min_ngram: 2
+  #   max_ngram: 5
+  #   lowercase: true
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
 policies:
@@ -38,12 +36,12 @@ policies:
   # # If you'd like to customize them, uncomment and adjust the policies.
   # # See https://rasa.com/docs/rasa/policies for more information.
   - name: MemoizationPolicy
-    max_history: 8
+    max_history: 5
   - name: RulePolicy
     max_history: 3
-    epochs: 50
+    epochs: 100
   - name: TEDPolicy
-    max_history: 8
+    max_history: 5
     epochs: 50
     constrain_similarities: True
 

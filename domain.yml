@@ -1,153 +1,153 @@
-version: '3.1'
+version: "3.1"
 intents:
-- affirm
-- ask_HT_info
-- ask_HT_where
-- ask_ability
-- ask_event_enable
-- ask_for_meal
-- ask_info_event
-- ask_most_event
-- ask_new_event
-- ask_next_event
-- ask_register_event
-- ask_register_seat
-- ask_seat_find
-- ask_seat_info
-- ask_today_event
-- ask_total_event
-- ask_type_event
-- bot_challenge
-- deny
-- goodbye
-- greet
-- inform_email
-- inform_event
-- mood_great
-- mood_unhappy
-- other_features
-- stop_form
-- thankyou
+  - affirm
+  - ask_HT_info
+  - ask_HT_where
+  - ask_ability
+  - ask_event_enable
+  - ask_for_meal
+  - ask_info_event
+  - ask_most_event
+  - ask_new_event
+  - ask_next_event
+  - ask_register_event
+  - ask_register_seat
+  - ask_seat_find
+  - ask_seat_info
+  - ask_today_event
+  - ask_total_event
+  - ask_type_event
+  - bot_challenge
+  - deny
+  - goodbye
+  - greet
+  - inform_email
+  - inform_event
+  - mood_great
+  - mood_unhappy
+  - other_features
+  - stop_form
+  - thankyou
 entities:
-- event_name
-- user_email
-- timeOfDay
+  - event_name
+  - user_email
+  - timeOfDay
 slots:
   time:
     type: text
     mappings:
-    - type: from_entity
-      entity: timeOfDay
+      - type: from_entity
+        entity: timeOfDay
   event:
     type: text
     mappings:
-    - type: from_entity
-      entity: event_name
+      - type: from_entity
+        entity: event_name
   email:
     type: text
     mappings:
-    - type: from_text
-      conditions:
-      - active_loop: register_event_form
-        requested_slot: email
+      - type: from_text
+        conditions:
+          - active_loop: register_event_form
+            requested_slot: email
 forms:
   event_form:
     required_slots:
-    - event
+      - event
   register_event_form:
     required_slots:
-    - event
-    - email
+      - event
+      - email
 responses:
+  utter_thankyou:
+    - text: Không có gì ạ!
   utter_greet:
-  - text: xin chào bạn ạ!!
+    - text: xin chào bạn ạ!!
   utter_goodbye:
-  - text: Hẹn gặp lại
+    - text: Hẹn gặp lại
   utter_cheer_up:
-  - text: Nào cùng vui lên emmm ~~\n Thắp sáng lên tình yêu ~~
-    image: https://i.imgur.com/nGF1K8f.jpg
-  utter_ask_name:
-  - text: Tôi vẫn chưa biết tên của bạn
-  - text: Tên của bạn là gì nhỉ!
-  - text: bạn tên gì ?
+    - text: Nào cùng vui lên emmm ~~\n Thắp sáng lên tình yêu ~~
+      image: https://i.imgur.com/nGF1K8f.jpg
   utter_ask_email:
-  - text: Tôi vẫn chưa biết email của bạn
-  - text: Email của bạn là gì nhỉ!
+    - text: Tôi vẫn chưa biết email của bạn
+    - text: Email của bạn là gì nhỉ!
   utter_ask_event:
-  - text: |
-      Xin hãy cung cấp tên sự kiện (như mẫu):
-      Vd: sự kiện tên là abc 
-      hoặc tên sự kiện là abc
+    - text: |
+        Xin hãy cung cấp tên sự kiện (như mẫu):
+        Vd: sự kiện tên là abc 
+        hoặc tên sự kiện là abc
   utter_unhappy:
-  - text: Xin lỗi vì sai lầm này ~~
+    - text: Xin lỗi vì sai lầm này ~~
   utter_show_ability:
-  - text: Tôi có thể giúp bạn những chức năng mà bạn chưa biết trong trang Web này.
+    - text: Tôi có thể giúp bạn những chức năng mà bạn chưa biết trong trang Web này.
   utter_other_features:
-  - text: |
-      Còn ngoài lề thì một ít
-       có thể gợi ý buổi trưa ăn gì :))
+    - text: |
+        Còn ngoài lề thì một ít
+         có thể gợi ý buổi trưa ăn gì :))
   utter_happy:
-  - text: Quá khen ạ!
-  utter_bot_name:
-  - text: tôi là vancy
-  utter_iamabot:
-  - text: Tui là chatBot
-  utter_ask_continue:
-  - text: Bạn có muốn tiếp tục hay dừng?
+    - text: Quá khen ạ!
+  utter_type_event:
+    - text: |
+        Hiện tại có 5 loại sự kiện chính:
+        1. Sự kiện về giáo dục
+        2. Sự kiện về thương mại
+        3. Sự kiện về giải trí
+        4. Sự kiện về thể thao
+        5. sự kiện về văn hóa
   utter_register_event:
-  - text: |
-      Nếu bạn muốn đăng ký sự kiện: 
-      1. Chỉ giáo viện hoặc người quản lý mới có thể đăng ký
-      2. Bạn cần đăng nhập vào hệ thống 
-      3. Bạn chọn mục đăng ký sự kiện và nhập thông tin vào
-      4. Cuối cùng bạn phải chờ được xác nhập từ người quản lý
+    - text: |
+        Nếu bạn muốn đăng ký sự kiện: 
+        1. Chỉ giáo viện hoặc người quản lý mới có thể đăng ký
+        2. Bạn cần đăng nhập vào hệ thống 
+        3. Bạn chọn mục đăng ký sự kiện và nhập thông tin vào
+        4. Cuối cùng bạn phải chờ được xác nhập từ người quản lý
   utter_HT_where:
-  - text: |
-      Từ cổng B đi thẳng vào, nằm kế ngay tòa nhà công nghệ cao là hội trường rùa
+    - text: |
+        Từ cổng B đi thẳng vào, nằm kế ngay tòa nhà công nghệ cao là hội trường rùa
   utter_HT_info:
-  - text: |
-      "Hội trường Rùa là một trong những hội trường lớn nhất và hiện đại nhất tại Đại học Cần Thơ. Hội trường có sức chứa 1.355 chỗ ngồi, được trang bị đầy đủ các trang thiết bị hiện đại, phục vụ cho các hoạt động hội nghị, hội thảo, biểu diễn văn nghệ,...
-      Hội trường Rùa được đặt tên theo hình dáng của tòa nhà, giống như hình một con rùa đang bơi. Hội trường được xây dựng vào năm 2010, là một trong những công trình trọng điểm của Đại học Cần Thơ."
+    - text: |
+        "Hội trường Rùa là một trong những hội trường lớn nhất và hiện đại nhất tại Đại học Cần Thơ. Hội trường có sức chứa 1.355 chỗ ngồi, được trang bị đầy đủ các trang thiết bị hiện đại, phục vụ cho các hoạt động hội nghị, hội thảo, biểu diễn văn nghệ,...
+        Hội trường Rùa được đặt tên theo hình dáng của tòa nhà, giống như hình một con rùa đang bơi. Hội trường được xây dựng vào năm 2010, là một trong những công trình trọng điểm của Đại học Cần Thơ."
   utter_find_seat:
-  - text: |
-      Nếu bạn muốn tìm chổ ngồi: 
-      1. Bạn cần đăng nhập vào hệ thống 
-      2. Bạn chọn map 
-      3. Bạn chọn sự kiện bạn đã đăng ký tham gia
-      4. Bạn nhập mã sinh viên (giảng viên) của bạn vào thanh tìm kiếm và tìm
+    - text: |
+        Nếu bạn muốn tìm chổ ngồi: 
+        1. Bạn cần đăng nhập vào hệ thống 
+        2. Bạn chọn map 
+        3. Bạn chọn sự kiện bạn đã đăng ký tham gia
+        4. Bạn nhập mã sinh viên (giảng viên) của bạn vào thanh tìm kiếm và tìm
   utter_seat_info:
-  - text: |
-      Chổ ngồi của bạn không thể tự quyết định, bạn được sắp xếp của người quản lý
-  - text: |
-      Bạn không thể tự quyết định chổ ngồi của bạn,chổ ngồi được sắp xếp của người quản lý
-  - text: |
-      - Chổ ngồi thường được xếp theo thứ tự đăng ký, nhưng vẫn có thể xếp theo nguyên tắc nhất định:
-      + Xếp theo tên.
-      + Xếp theo mã 
-      + Xếp theo đơn vị
-      + Xếp theo ngành
-      + Xếp theo lớp
+    - text: |
+        Chổ ngồi của bạn không thể tự quyết định, bạn được sắp xếp của người quản lý
+    - text: |
+        Bạn không thể tự quyết định chổ ngồi của bạn,chổ ngồi được sắp xếp của người quản lý
+    - text: |
+        - Chổ ngồi thường được xếp theo thứ tự đăng ký, nhưng vẫn có thể xếp theo nguyên tắc nhất định:
+        + Xếp theo tên.
+        + Xếp theo mã 
+        + Xếp theo đơn vị
+        + Xếp theo ngành
+        + Xếp theo lớp
   utter_default:
-  - text: Tôi không hiểu ý bạn, vui lòng nhập lại?
+    - text: Tôi không hiểu ý bạn, vui lòng nhập lại?
 actions:
-- action_event_help
-- action_event_enable
-- action_tomorow_event
-- utter_ask_continue
-- action_today_event
-- action_most_event
-- utter_greet
-- action_new_event
-- action_register_seat
-- utter_show_ability
-- action_greet_with_name
-- action_recommend
-- action_set_name
-- action_total_event
-- action_info_event
-- validate_register_event_form
-- validate_event_form
-- action_deactivate_loop
+  - action_event_help
+  - action_event_enable
+  - action_tomorow_event
+  - utter_ask_continue
+  - action_today_event
+  - action_most_event
+  - utter_greet
+  - action_new_event
+  - action_register_seat
+  - utter_show_ability
+  - action_greet_with_name
+  - action_recommend
+  - action_set_name
+  - action_total_event
+  - action_info_event
+  - validate_register_event_form
+  - validate_event_form
+  - action_deactivate_loop
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

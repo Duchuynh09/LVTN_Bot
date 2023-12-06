@@ -1,5 +1,22 @@
 version: "3.1"
 rules:
+  - rule: cảm ơn
+    steps:
+      - intent: thankyou
+      - action: utter_thankyou
+  - rule:
+    steps:
+      - intent: greet
+      - action: utter_greet
+      
+  - rule:
+    steps:
+      - intent: ask_ability
+      - action: action_event_help
+  - rule: hỏi loại sự kiện
+    steps:
+      - intent: ask_type_event
+      - action: utter_type_event
   - rule: hỏi đăng ký sự kiện
     steps:
       - intent: ask_register_event
@@ -103,7 +120,6 @@ rules:
           - event: null
       - slot_was_set:
           - email: null
-      - action: action_event_help
   - rule: Dừng form event_form
     condition:
       - active_loop: event_form
@@ -117,7 +133,6 @@ rules:
           - event: null
       - slot_was_set:
           - email: null
-      - action: action_event_help
   - rule: nhận event name
     condition:
       - active_loop: event_form

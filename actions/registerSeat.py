@@ -43,7 +43,5 @@ class RegisterEventForm(FormValidationAction):
         if validate_email:
             return {"email": validate_email}
         else:
-            dispatcher.utter_message(
-                "Event phải đúng định dạng:\n- @student.ctu.edu.vn\n hoặc\n- @ctu.edu.vn"
-            )
+            dispatcher.utter_message("Email phải đúng định dạng")
             return {"email": None}

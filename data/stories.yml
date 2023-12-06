@@ -7,20 +7,55 @@ stories:
       - action: utter_greet
   - story: tạm biệt
     steps:
-      - intent: goodbye
+      - intent: ask_ability
       - action: action_event_help
+  - story: câu chuyện để demo
+    steps:
+      - intent: ask_ability
+      - action: action_event_help
+      - intent: ask_info_event
+      - action: event_form
+      - active_loop: event_form
+      - slot_was_set:
+          - event
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_info_event
+      - slot_was_set:
+          - event: null
+      - intent: ask_register_seat
+      - action: register_event_form
+      - active_loop: register_event_form
+      - slot_was_set:
+          - requested_slot: event
+      - intent: inform_event
+      - slot_was_set:
+          - event
+      - action: register_event_form
+      - slot_was_set:
+          - requested_slot: email
+      - intent: inform_email
+      - slot_was_set:
+          - event
+          - email
+      - action: register_event_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_register_seat
   - story: hỏi chức nằng và nên ăn gì
     steps:
       - intent: greet
       - action: utter_greet
       - intent: ask_ability
-      - action: utter_show_ability
+      - action: action_event_help
       - intent: ask_for_meal
       - action: action_recommend
   - story: Cảm ơn và không có gì
     steps:
       - intent: thankyou
-      - action: utter_happy
+      - action: utter_thankyou
       - intent: affirm
       - action: utter_cheer_up
   - story: hỏi chức nằng
@@ -28,42 +63,31 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: ask_ability
-      - action: utter_show_ability
+      - action: action_event_help
   - story: hỏi chức năng và sự kiện mới nhất
     steps:
       - intent: greet
       - action: utter_greet
       - intent: ask_ability
-      - action: utter_show_ability
+      - action: action_event_help
       - intent: ask_new_event
       - action: action_new_event
       - intent: thankyou
-      - action: action_event_help
+      - action: utter_thankyou
   - story: hỏi chức năng và hỏi ăn gì
     steps:
       - intent: greet
       - action: utter_greet
       - intent: ask_ability
-      - action: utter_show_ability
+      - action: action_event_help
       - intent: other_features
       - action: utter_other_features
       - intent: ask_for_meal
       - action: action_recommend
-  - story: hỏi chức năng hỏi, sự kiện ngày mai và đúng
+  - story: hỏi chức năng hỏi, sự kiện ngày mai
     steps:
       - intent: ask_ability
-      - action: utter_show_ability
-      - intent: ask_next_event
-      - action: action_tomorow_event
-      - or:
-          - intent: affirm
-          - intent: thankyou
-          - intent: mood_great
       - action: action_event_help
-  - story: hỏi chức năng hỏi, sự kiện ngày mai nhưng sai
-    steps:
-      - intent: ask_ability
-      - action: utter_show_ability
       - intent: ask_next_event
       - action: action_tomorow_event
       - or:
@@ -94,7 +118,6 @@ stories:
           - event: null
       - slot_was_set:
           - email: null
-      - action: action_event_help
   - story: Đăng ký tham gia sự kiện
     steps:
       - intent: ask_register_seat
@@ -154,8 +177,6 @@ stories:
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: ask_ability
-      - action: utter_show_ability
       - intent: ask_register_seat
       - action: register_event_form
       - active_loop: register_event_form
@@ -191,8 +212,6 @@ stories:
       - action: utter_greet
       - intent: ask_next_event
       - action: action_tomorow_event
-      - intent: goodbye
-      - action: action_event_help
   - story: chào hỏi và chọn hỏi thông tin sự kiện
     steps:
       - intent: greet
@@ -214,8 +233,6 @@ stories:
       - action: action_info_event
       - slot_was_set:
           - event: null
-      - intent: goodbye
-      - action: action_event_help
   - story: chào hỏi và chọn hỏi thông tin sự kiện shorts
     steps:
       - intent: greet
@@ -350,36 +367,6 @@ stories:
           - event: null
       - slot_was_set:
           - email: null
-      - action: action_event_help
-      - intent: ask_most_event
-      - action: action_most_event
-  - story: stop form on email + ask_event_enable
-    steps:
-      - intent: ask_register_seat
-      - action: register_event_form
-      - active_loop: register_event_form
-      - slot_was_set:
-          - requested_slot: event
-      - intent: inform_event
-      - slot_was_set:
-          - event
-      - action: register_event_form
-      - slot_was_set:
-          - event
-      - slot_was_set:
-          - requested_slot: email
-      - intent: stop_form
-      - action: action_deactivate_loop
-      - active_loop: null
-      - slot_was_set:
-          - requested_slot: null
-      - slot_was_set:
-          - event: null
-      - slot_was_set:
-          - email: null
-      - action: action_event_help
-      - intent: ask_event_enable
-      - action: action_event_enable
   - story: stop form on email
     steps:
       - intent: ask_register_seat
@@ -406,4 +393,3 @@ stories:
           - event: null
       - slot_was_set:
           - email: null
-      - action: action_event_help

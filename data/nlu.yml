@@ -222,6 +222,10 @@ nlu:
       - đi đường
       - ở đâu
       - địa chỉ
+      - đường nào tới
+      - chạy đường nào
+      - làm sao có thể đến đó
+      - đến đó bằng đường nào
   - intent: ask_seat_info
     examples: |
       - chổ ngồi được xếp như thế nào
@@ -231,6 +235,13 @@ nlu:
       - cách nào để tự chọn chổ ngồi
       - chổ ngồi được sắp xếp sẵn
       - không được chọn chổ ngồi cho mình
+      - ngồi tùy ý luôn hay sao
+      - chổ ngồi như thế nào
+      - có thể ngồi ở đâu cũng được
+      - ngồi bàn đầu 
+      - ngồi ở cuối
+      - ngồi ở giữa
+      - tự kiếm chổ mà ngồi
   - intent: ask_seat_find
     examples: |
       - chổ ngồi ở đâu
@@ -275,6 +286,14 @@ nlu:
       - đăng ký tổ chức
       - đăng ký sự kiện
       - muốn tổ chức
+      - tạo như thế nào
+      - sinh viên đăng ký như thế nào
+      - ai có thể đăng ký tổ chức
+      - người được phép đăng ký tổ chức
+      - không tìm thấy vừa tạo
+      - không tạo được
+      - tạo bị lỗi
+      - không thể đăng ký tổ chức
   - intent: inform_event
     examples: |
       - sự kiện tên là [tốt nghiệp](event_name)
@@ -293,6 +312,15 @@ nlu:
       - bao nhiêu đã tồn tại
       - đã tồn tại bao nhiêu rồi
       - tổng bao nhiêu
+      - số lượng 
+      - mấy được tạo
+      - bao nhiêu có thể đăng ký
+      - đã gồm bao nhiêu
+      - số lượng từ trước tới giờ
+      - tổng số lượng đã tạo
+      - có bao nhiêu đã tạo
+      - liệt kê số lượng đã tạo
+      - nhiều bao nhiêu được tạo
   - intent: ask_today_event
     examples: |
       - bạn giúp tôi xem hôm nay diễn ra không
@@ -302,8 +330,25 @@ nlu:
       - hôm nay nào diễn ra
       - xem hôm nay
       - sự kiện hôm nay
+      - có gì hơm nay
+      - tham gia hôm nay
+      - đang diễn ra
+      - mới diễn ra
+      - tham gia ngay
+      - bây giờ là gì
+      - tồn tại bây giờ
+      - diễn ra bây giờ
+      - buổi sáng nay
+      - buổi trưa nay
+      - buổi tối nay
   - intent: ask_next_event
     examples: |
+      - ngày mơi
+      - tomorow
+      - tomorrow
+      - sau hôm nay
+      - sau tối nay
+      - diễn ra ngày mơi
       - ngày mai
       - sẽ được tổ chức vào ngày mai
       - ngày mai là gì
@@ -315,6 +360,9 @@ nlu:
       - bao nhiêu loại
       - gồm những loại nào
       - tôi đăng ký được những nào
+      - mấy kiểu
+      - mấy loại
+      - nhiều loại không
   - intent: ask_most_event
     examples: |
       - nào được tham gia nhiều nhất
@@ -323,6 +371,15 @@ nlu:
       - người ta tham gia nào nhiều
       - được nhiều người tham gia
       - đáng để tham gia nhất
+      - trend
+      - tốt nhất
+      - xứng đáng để tham gia
+      - nên tham gia vào
+      - thật sự hay
+      - tham gia một lần trong đời
+      - ai cũng biết đến
+      - nổi tiếng nhất
+      - tốt nhất
   - intent: ask_new_event
     examples: |
       - mới nhất
@@ -332,6 +389,17 @@ nlu:
       - mới nhất là gì
       - mới được tổ chức
       - không ai tham gia
+      - chưa ai tham gia
+      - vừa được tạo
+      - vừa được duyệt
+      - mới tạo
+      - được hình thành
+      - duyệt hôm nay
+      - cập nhật hôm nay
+      - mới được cập nhật
+      - vừa cập nhập
+      - new
+      - new event
   - intent: ask_event_enable
     examples: |
       - nào được cho phép
@@ -339,12 +407,20 @@ nlu:
       - không ràng buộc tham gia
       - tham gia được không
       - không giới hạn người tham gia
+      - tự do tham gia được
+      - không bắt buộc có trong danh sách
+      - tùy ý tham gia
+      - cho phép vô tận
+      - cho phép miễn phí
+      - tham gia tự do 
+      - có thể tham gia
+      - ai cũng có thể tham gia
   - intent: ask_info_event
     examples: |
       - xem thông tin
       - thông tin thời gian diễn ra
       - tôi muốn biết thông tin
-      - thông tin
+      - tìm thông tin 
       - thông tin như thế nào
       - thông tin diễn ra lúc nào
       - thông tin diễn ra vào ngày nào
@@ -365,6 +441,8 @@ nlu:
       - stop
       - tôi muốn dừng lại
       - tôi nói là dừng lại
+      - ngưng 
+      - dừng trò chuyện
   - intent: ask_for_meal
     examples: |
       - Buổi [sáng](timeOfDay) nay ăn gì
@@ -384,8 +462,7 @@ nlu:
       - [a-z0-9]{24}
   - regex: user_email
     examples: |
-      - ^[a-zA-Z0-9.+-]+@ctu.edu.vn
-      - ^[a-zA-Z]{1,6}[a-zA-Z]{1}[0-9]{5,7}@student.ctu.edu.vn
+      - ^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$
   - lookup: timeOfDay
     examples: |
       - sáng

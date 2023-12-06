@@ -327,7 +327,6 @@ class ActionRegisterSeat(Action):
         email = tracker.get_slot("email")
         entityEmail = next(tracker.get_latest_entity_values("user_email"), None)
         event = tracker.get_slot("event")
-        print(entityEmail)
         if entityEmail and event:
             response = requests.post(
                 url + "/registerSeatByRasa", data={"event": event, "email": entityEmail}
@@ -353,6 +352,6 @@ class SugestEventHelp(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         buttons = suggest()
-        dispatcher.utter_message(text="Bạn cần giúp gì thêm", buttons=buttons)
+        dispatcher.utter_message(text="Bạn cần giúp gì", buttons=buttons)
 
         return []
